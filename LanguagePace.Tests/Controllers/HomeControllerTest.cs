@@ -1,4 +1,13 @@
-﻿using System;
+﻿ /* Copyright (C) LanguagePace.com
+- All Rights Reserved
+* Unauthorized copying of this file, via any medium is strictly prohibited
+* proprietary and confidential
+* Written by Travis Wiggins
+<LanguagePace@Yahoo.com>,
+July 24th 2017
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
