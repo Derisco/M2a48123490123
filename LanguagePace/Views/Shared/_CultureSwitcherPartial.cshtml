@@ -1,0 +1,44 @@
+﻿@* Copyright (C) LanguagePace.Com
+    - All Rights Reserved
+    * Unauthorized copying of this file, via any medium is strictly prohibited
+    * Proprietary and confidential
+    * Written by Travis Wiggins
+    <LanguagePace@Yahoo.com>,
+    July 25th 2017
+*@
+
+@{
+    System.Globalization.CultureInfo currentCulture;
+    var supportedCultures = LanguagePace.Helpers.CultureHelper.GetSwitchCultures(out currentCulture);
+    string currentCultureDisplayName = currentCulture.Parent.NativeName;
+}
+<div class="btn-group">
+    <button type="button" class="btn btn-primary">
+        @foreach (var culture in supportedCultures)
+        {
+            if (culture.Name == currentCulture.Name)
+            {
+                @culture.Parent.NativeName <i class="fa fa-globe"></i>
+            }
+        }
+    </button>
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-chevron-down"></i></button>
+
+    <ul class="dropdown-menu">
+        @foreach (var culture in supportedCultures)
+        {
+            string url = Url.Action("SetPreferredCulture", "Culture", new { culture = culture.Name, returnUrl = Request.RawUrl });
+            string urlName = culture.Parent.NativeName;
+
+            if (culture.Name == currentCulture.Name)
+            {
+                <li class="active"><a href="@url">@urlName <i class="fa fa-check"></i></a></li>
+            }
+            else
+            {
+                <li><a href="@url">@urlName</a></li>
+            }
+        }
+    </ul>
+</div>
+
