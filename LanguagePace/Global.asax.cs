@@ -26,5 +26,14 @@ namespace LanguagePace
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        /// <summary>
+        /// Fires on each request.
+        /// </summary>
+        protected void Application_OnBeginRequest()
+        {
+            // Get culture of the client
+            LanguagePace.Helpers.CultureHelper.ApplyUserCulture(Request);
+        }
     }
 }

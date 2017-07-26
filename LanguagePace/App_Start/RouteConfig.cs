@@ -18,6 +18,12 @@ namespace LanguagePace
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "SetPreferredCulture",
+                url: "SetPreferredCulture/{culture}",
+                defaults: new { controller = "Culture", action = "SetPreferredCulture", culture = UrlParameter.Optional }
+            );
         }
     }
 }
