@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LanguagePace.Identity.MySQL
+namespace LanguagePace.MySQL
 {
     public class Class1
     {

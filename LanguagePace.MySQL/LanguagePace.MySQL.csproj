@@ -7,8 +7,8 @@
     <ProjectGuid>4fdbe0a3-5d50-4481-8412-6c4302f7c124</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LanguagePace.Identity.MySQL</RootNamespace>
-    <AssemblyName>LanguagePace.Identity.MySQL</AssemblyName>
+    <RootNamespace>LanguagePace.MySQL</RootNamespace>
+    <AssemblyName>LanguagePace.MySQL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
