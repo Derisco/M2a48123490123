@@ -91,7 +91,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LanguagePace\LanguagePace.csproj">
+    <ProjectReference Include="..\LanguagePace.Web\LanguagePace.Web.csproj">
       <Project>{A28839C6-4C95-4924-ACDF-B5CA27E4D2BB}</Project>
       <Name>LanguagePace</Name>
     </ProjectReference>

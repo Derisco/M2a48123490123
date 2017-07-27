@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguagePace", "LanguagePace\LanguagePace.csproj", "{A28839C6-4C95-4924-ACDF-B5CA27E4D2BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguagePace.Web", "LanguagePace.Web\LanguagePace.Web.csproj", "{A28839C6-4C95-4924-ACDF-B5CA27E4D2BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguagePace.Tests", "LanguagePace.Tests\LanguagePace.Tests.csproj", "{E1DFB36E-AA03-442A-B553-147CC1D7116D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguagePace.MySQL", "LanguagePace.MySQL\LanguagePace.MySQL.csproj", "{4FDBE0A3-5D50-4481-8412-6C4302F7C124}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E1DFB36E-AA03-442A-B553-147CC1D7116D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1DFB36E-AA03-442A-B553-147CC1D7116D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1DFB36E-AA03-442A-B553-147CC1D7116D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FDBE0A3-5D50-4481-8412-6C4302F7C124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FDBE0A3-5D50-4481-8412-6C4302F7C124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FDBE0A3-5D50-4481-8412-6C4302F7C124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FDBE0A3-5D50-4481-8412-6C4302F7C124}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
