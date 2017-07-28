@@ -217,6 +217,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="Localizations\Labels register page.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Labels register page.resx</DependentUpon>
+    </Compile>
     <Compile Include="Localizations\Labels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -315,6 +320,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Localizations\Labels register page.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Labels register page.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Localizations\Labels.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Labels.Designer.cs</LastGenOutput>
