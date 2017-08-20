@@ -1,4 +1,13 @@
-﻿using System;
+﻿/* Copyright(C) LanguagePace.Com 
+- All Rights Reserved
+* Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Written by Travis Wiggins, Erik Hattervig
+* <LanguagePace@Yahoo.com>,
+* July 27th 2017
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,7 +20,7 @@ namespace LanguagePace.MySQL
     ///     Class that encapsulates a MySQL database connections
     ///     and CRUD operations
     /// </summary>
-    class MySQLDatabase : IDisposable
+    public class MySQLDatabase : IDisposable
     {
         private MySqlConnection _connection;
 
@@ -50,13 +59,43 @@ namespace LanguagePace.MySQL
             try
             {
                 EnsureConnectionOpen();
-                var command = CreateCommand(commandText, parameters);
+                var command = CreateCommand(commandText, parameters, CommandType.Text);
                 result = command.ExecuteNonQuery();
             }
             finally
             {
-                _connection.Close();
+                EnsureConnectionClosed();
             }
+
+            return result;
+        }
+
+        /// <summary>
+        ///     Executes a non-query MySQL statement
+        /// </summary>
+        /// <param name="procedure">Name of procedure to execute</param>
+        /// <param name="parameters">Optional parameter to pass to the querey</param>
+        /// <returns>The count of records affected by the MySQL statement</returns>
+        public int ExecuteStoredProcedure(string procedure, Dictionary<string, object> parameters)
+        {
+            int result = 0;
+
+            if (String.IsNullOrEmpty(procedure))
+            {
+                throw new ArgumentException("Procedure cannot be null or empty.");
+            }
+
+            try
+            {
+                EnsureConnectionOpen();
+                var command = CreateCommand(procedure, parameters, CommandType.StoredProcedure);
+                result = command.ExecuteNonQuery();
+            }
+            finally
+            {
+                EnsureConnectionClosed();
+            }
+
 
             return result;
         }
@@ -79,7 +118,7 @@ namespace LanguagePace.MySQL
             try
             {
                 EnsureConnectionOpen();
-                var command = CreateCommand(commandText, parameters);
+                var command = CreateCommand(commandText, parameters, CommandType.Text);
                 result = command.ExecuteScalar();
             }
             finally
@@ -88,6 +127,50 @@ namespace LanguagePace.MySQL
             }
 
             return result;
+        }
+
+        /// <summary>
+        ///     Executes a MySQL stored procedure that returns a list of rows as the result.
+        /// </summary>
+        /// <param name="procedure">The stored procedure to execute</param>
+        /// <param name="parameters">Optional parameters to pass to the querey</param>
+        /// <returns></returns>
+        public List<Dictionary<string, string>> QueryStoredProcedure(string procedure, Dictionary<string, object> parameters)
+        {
+            List<Dictionary<string, string>> rows = null;
+
+            if (String.IsNullOrEmpty(procedure))
+            {
+                throw new ArgumentException("Procedure cannot be null or empty.");
+            }
+
+            try
+            {
+                EnsureConnectionOpen();
+                var command = CreateCommand(procedure, parameters, CommandType.StoredProcedure);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    rows = new List<Dictionary<string, string>>();
+                    while (reader.Read())
+                    {
+                        var row = new Dictionary<string, string>();
+                        for (var i = 0; i < reader.FieldCount; i++)
+                        {
+                            var columnName = reader.GetName(i);
+                            var columnValue = reader.IsDBNull(i) ? null : reader.GetString(i);
+                            row.Add(columnName, columnValue);
+                        }
+                        rows.Add(row);
+                    }
+
+                }
+            }
+            finally
+            {
+                EnsureConnectionClosed();
+            }
+
+            return rows;
         }
 
         /// <summary>
@@ -110,7 +193,7 @@ namespace LanguagePace.MySQL
             try
             {
                 EnsureConnectionOpen();
-                var command = CreateCommand(commandText, parameters);
+                var command = CreateCommand(commandText, parameters, CommandType.Text);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     rows = new List<Dictionary<string, string>>();
@@ -174,10 +257,11 @@ namespace LanguagePace.MySQL
         /// <param name="commandText">The MySQL query to execute</param>
         /// <param name="parameters">Parameters to pass to the MySQL query</param>
         /// <returns></returns>
-        private MySqlCommand CreateCommand(string commandText, Dictionary<string, object> parameters)
+        private MySqlCommand CreateCommand(string commandText, Dictionary<string, object> parameters, CommandType commandType)
         {
             MySqlCommand command = _connection.CreateCommand();
             command.CommandText = commandText;
+            command.CommandType = CommandType.StoredProcedure;
             AddParameters(command, parameters);
 
             return command;

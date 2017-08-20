@@ -10,7 +10,9 @@ using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+//using Microsoft.AspNet.Identity.EntityFramework;
+using LanguagePace.Identity;
+using LanguagePace.MySQL;
 
 namespace LanguagePace.Models
 {
@@ -26,16 +28,16 @@ namespace LanguagePace.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : MySQLDatabase  //IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public ApplicationDbContext(string connectionName)
+            : base(connectionName)
         {
         }
 
         public static ApplicationDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new ApplicationDbContext("DefaultConnection");
         }
     }
 }

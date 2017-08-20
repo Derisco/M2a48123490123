@@ -321,6 +321,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Localizations\Labels.es-MX.resx" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LanguagePace.Identity\LanguagePace.Identity.csproj">
+      <Project>{dca97d29-9ebd-4b09-b2f1-f982077dc91b}</Project>
+      <Name>LanguagePace.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LanguagePace.MySQL\LanguagePace.MySQL.csproj">
+      <Project>{4fdbe0a3-5d50-4481-8412-6c4302f7c124}</Project>
+      <Name>LanguagePace.MySQL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

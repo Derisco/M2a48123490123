@@ -1,7 +1,16 @@
-﻿using System;
+﻿/* Copyright(C) LanguagePace.Com 
+- All Rights Reserved
+* Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Written by Travis Wiggins, Erik Hattervig
+* <LanguagePace@Yahoo.com>,
+* July 27th 2017
+*/
+
+using System;
 using Microsoft.AspNet.Identity;
 
-namespace LanguagePace.MySQL
+namespace LanguagePace.Identity
 {
     public class IdentityUser : IUser
     {
@@ -36,6 +45,14 @@ namespace LanguagePace.MySQL
         ///     UserName, must be unique
         /// </summary>
         public string UserName { get; set; }
+
+        public virtual string FirstName { get; set; }
+
+        public virtual string LastName { get; set; }
+
+        public virtual string Bio { get; set; }
+
+        public virtual int DefaultLanguage { get; set; }
 
         /// <summary>
         ///     If the user's email has be confermed by email

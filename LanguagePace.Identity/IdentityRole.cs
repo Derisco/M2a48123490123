@@ -1,12 +1,21 @@
-﻿using System;
+﻿/* Copyright(C) LanguagePace.Com 
+- All Rights Reserved
+* Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Written by Travis Wiggins, Erik Hattervig
+* <LanguagePace@Yahoo.com>,
+* July 29th 2017
+*/
+
+using System;
 using Microsoft.AspNet.Identity;
 
-namespace LanguagePace.MySQL
+namespace LanguagePace.Identity
 {
     /// <summary>
     ///     Implements the ASP.NET Identity IRole Interface
     /// </summary>
-    class IdentityRole : IRole
+    public class IdentityRole : IRole
     {
         /// <summary>
         ///     Default constructor for Role
