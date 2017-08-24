@@ -48,7 +48,7 @@ namespace LanguagePace.Identity
         /// </summary>
         public UserStore()
         {
-            new UserStore<TUser>(new MySQLDatabase(DBConnectionStringName));
+            Database = new MySQLDatabase(DBConnectionStringName);
         }
 
         /// <summary>
@@ -78,6 +78,7 @@ namespace LanguagePace.Identity
                 {
                     { "userId", user.Id },
                     { "email", user.Email },
+                    { "userName", user.UserName },
                     { "passwordHash", user.PasswordHash },
                     { "firstName", user.FirstName },
                     { "lastName", user.LastName },

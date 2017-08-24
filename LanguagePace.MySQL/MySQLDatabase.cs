@@ -261,8 +261,11 @@ namespace LanguagePace.MySQL
         {
             MySqlCommand command = _connection.CreateCommand();
             command.CommandText = commandText;
-            command.CommandType = CommandType.StoredProcedure;
-            AddParameters(command, parameters);
+            command.CommandType = commandType;
+            if (commandType == CommandType.StoredProcedure)
+                AddParametersStoredProcedure(command, parameters);
+            else
+                AddParameters(command, parameters);
 
             return command;
         }
@@ -285,6 +288,19 @@ namespace LanguagePace.MySQL
                 parameter.ParameterName = param.Key;
                 parameter.Value = param.Value ?? DBNull.Value;
                 command.Parameters.Add(parameter);
+            }
+        }
+
+        private static void AddParametersStoredProcedure(MySqlCommand command, Dictionary<string, object> parameters)
+        {
+            if (parameters == null)
+            {
+                return;
+            }
+
+            foreach (var param in parameters)
+            {
+                command.Parameters.AddWithValue("@" + param.Key, param.Value ?? DBNull.Value);
             }
         }
 
