@@ -25,7 +25,7 @@ namespace LanguagePace
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/Content/LanguagePace.css",
                       "~/Content/font-awesome.css"));
         }
     }
