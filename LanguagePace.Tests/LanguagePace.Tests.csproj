@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -86,11 +89,14 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountControllerTest.cs" />
     <Compile Include="Controllers\AccountDataTest.cs" />
+    <Compile Include="Email\EmailTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.config" />
+    <Content Include="App.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -105,6 +111,10 @@
     <ProjectReference Include="..\LanguagePace.MySQL\LanguagePace.MySQL.csproj">
       <Project>{4fdbe0a3-5d50-4481-8412-6c4302f7c124}</Project>
       <Name>LanguagePace.MySQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LanguagePace.Send\LanguagePace.Send.csproj">
+      <Project>{fa731db0-30f3-4d12-b97d-a10cc18b88c6}</Project>
+      <Name>LanguagePace.Send</Name>
     </ProjectReference>
     <ProjectReference Include="..\LanguagePace.Web\LanguagePace.Web.csproj">
       <Project>{A28839C6-4C95-4924-ACDF-B5CA27E4D2BB}</Project>

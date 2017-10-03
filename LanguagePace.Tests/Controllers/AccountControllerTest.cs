@@ -43,7 +43,10 @@ namespace LanguagePace.Tests.Controllers
                 Email = "test@languagepace.com",
                 Username = "testUser",
                 Password = "PasswordTest1!",
-                ConfirmPassword = "PasswordTest1!"
+                ConfirmPassword = "PasswordTest1!",
+                DefaultLanguage = 1,
+                FirstName = "Test",
+                LastName = "McTest"
             };
 
             // Act
