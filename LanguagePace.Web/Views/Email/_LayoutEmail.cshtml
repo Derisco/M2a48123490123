@@ -1,0 +1,29 @@
+﻿@* Copyright (C) LanguagePace.Com
+    - All Rights Reserved
+    * Unauthorized copying of this file, via any medium is strictly prohibited
+    * Proprietary and confidential
+    * Written by Travis Wiggins, Erik Hattervig
+    <LanguagePace@Yahoo.com>,
+    August 24th 2017
+*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div> 
+        @RenderBody()
+    </div>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - LanguagePace.com</p>
+    </footer>
+</body>
+</html>
