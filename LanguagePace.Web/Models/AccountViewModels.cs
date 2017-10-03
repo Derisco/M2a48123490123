@@ -58,8 +58,7 @@ namespace LanguagePace.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "Email or Username")]
         public string Email { get; set; }
 
         [Required]
@@ -92,6 +91,17 @@ namespace LanguagePace.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Native Language")]
+        public int DefaultLanguage { get; set; }
+
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
     }
 
     public class ResetPasswordViewModel
