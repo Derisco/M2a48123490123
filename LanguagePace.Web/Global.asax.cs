@@ -2,7 +2,7 @@
 - All Rights Reserved
 * Unauthorized copying of this file, via any medium is strictly prohibited
 * Proprietary and confidential
-* Written by Travis Wiggins
+* Written by Travis Wiggins, Erik Hattervig
 <LanguagePace@Yahoo.com>,
 July 24th 2017
 */
@@ -25,6 +25,7 @@ namespace LanguagePace
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutoMapperConfig.RegisterMappings();
         }
 
         /// <summary>
