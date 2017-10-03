@@ -19,13 +19,13 @@ namespace LanguagePace.MySQL
         /// <param name="dictionary">List of dictionary items that make up the data
         ///     being hydrated</param>
         /// <returns></returns>
-        public static List<T> Hydrate<T>(List<Dictionary<string, string>> dictionary) where T : new()
+        public static List<T> Hydrate<T>(List<Dictionary<string, string>> dictionary)
         {
             var objs = new List<T>();
 
             foreach (var item in dictionary)
             {
-                T obj = new T();
+                T obj = (T)Activator.CreateInstance(typeof(T));
                 foreach(var pi in typeof(T).GetProperties())
                 {
                     string value;

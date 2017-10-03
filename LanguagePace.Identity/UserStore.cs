@@ -103,7 +103,10 @@ namespace LanguagePace.Identity
             var result = Database.QueryStoredProcedure("user_SelectById",
                 new Dictionary<string, object>() { { "userId", userId } });
 
-            return Task.FromResult((TUser)Helpers.Hydrate<IdentityUser>(result).FirstOrDefault());
+            if (result.Count() == 0)
+                return Task.FromResult<TUser>(null);
+
+            return Task.FromResult<TUser>(Helpers.Hydrate<TUser>(result).FirstOrDefault());
 
         }
 
@@ -122,7 +125,10 @@ namespace LanguagePace.Identity
             var result = Database.QueryStoredProcedure("user_SelectByUserName",
                 new Dictionary<string, object>() { { "userName", userName } });
 
-            return Task.FromResult((TUser)Helpers.Hydrate<IdentityUser>(result).FirstOrDefault());
+            if (result.Count() == 0)
+                return Task.FromResult<TUser>(null);
+
+            return Task.FromResult<TUser>(Helpers.Hydrate<TUser>(result).FirstOrDefault());
         }
 
         /// <summary>
@@ -140,7 +146,10 @@ namespace LanguagePace.Identity
             var result = Database.QueryStoredProcedure("user_SelectByEmail",
                 new Dictionary<string, object>() { { "email", email } });
 
-            return Task.FromResult((TUser)Helpers.Hydrate<IdentityUser>(result).FirstOrDefault());
+            if (result.Count() == 0)
+                return Task.FromResult<TUser>(null);
+
+            return Task.FromResult<TUser>(Helpers.Hydrate<TUser>(result).FirstOrDefault());
         }
 
         /// <summary>
@@ -882,7 +891,10 @@ namespace LanguagePace.Identity
             if (result.Count == 0)
                 throw new Exception("User does not exsist");
 
-            return Task.FromResult<DateTimeOffset>(DateTimeOffset.Parse(result.FirstOrDefault()["PhoneNumberConfirmed"]));
+            if (String.IsNullOrWhiteSpace(result.FirstOrDefault()["LockoutEndDateUtc"]))
+                return Task.FromResult<DateTimeOffset>(new DateTimeOffset());
+
+            return Task.FromResult<DateTimeOffset>(DateTimeOffset.Parse(result.FirstOrDefault()["LockoutEndDateUtc"]));
         }
 
         /// <summary>

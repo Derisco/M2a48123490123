@@ -97,9 +97,9 @@ namespace LanguagePace.Identity
             var result = Database.QueryStoredProcedure("role_SelectById",
                 new Dictionary<string, object>() { { "roleId", roleId } });
 
-            var role = Helpers.Hydrate<IdentityRole>(result);
+            var role = Helpers.Hydrate<TRole>(result);
 
-            return Task.FromResult<TRole>((TRole)role.FirstOrDefault());
+            return Task.FromResult<TRole>(role.FirstOrDefault());
         }
 
         /// <summary>
@@ -117,9 +117,9 @@ namespace LanguagePace.Identity
             var result = Database.QueryStoredProcedure("role_SelectByName",
                 new Dictionary<string, object>() { { "roleName" , roleName } });
 
-            var role = Helpers.Hydrate<IdentityRole>(result);
+            var role = Helpers.Hydrate<TRole>(result);
 
-            return Task.FromResult<TRole>((TRole)role.FirstOrDefault());
+            return Task.FromResult<TRole>(role.FirstOrDefault());
         }
 
         /// <summary>
