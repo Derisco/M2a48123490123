@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguagePace.MySQL", "Langu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguagePace.Identity", "LanguagePace.Identity\LanguagePace.Identity.csproj", "{DCA97D29-9EBD-4B09-B2F1-F982077DC91B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguagePace.Send", "LanguagePace.Send\LanguagePace.Send.csproj", "{FA731DB0-30F3-4D12-B97D-A10CC18B88C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DCA97D29-9EBD-4B09-B2F1-F982077DC91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCA97D29-9EBD-4B09-B2F1-F982077DC91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCA97D29-9EBD-4B09-B2F1-F982077DC91B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA731DB0-30F3-4D12-B97D-A10CC18B88C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA731DB0-30F3-4D12-B97D-A10CC18B88C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA731DB0-30F3-4D12-B97D-A10CC18B88C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA731DB0-30F3-4D12-B97D-A10CC18B88C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
